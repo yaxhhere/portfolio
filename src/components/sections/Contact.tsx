@@ -73,7 +73,7 @@ export default function Contact() {
           <div className="overflow-hidden">
             <motion.h2 className="font-bebas leading-tight" style={{ fontSize:'clamp(2.8rem,8vw,6rem)', color:'var(--text-0)' }}
               initial={{y:'105%'}} animate={inView?{y:'0%'}:{}} transition={{duration:0.9,delay:0.1,ease:[0.16,1,0.3,1]}}>
-              Let's Build The
+              Let&apos;s Build The
             </motion.h2>
           </div>
           <div className="overflow-hidden mb-6">
@@ -134,7 +134,7 @@ export default function Contact() {
                   <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-5"
                     style={{ background:'rgba(201,168,76,0.15)', border:'1px solid var(--border-accent)', boxShadow:'0 0 25px var(--glow-1)' }}>✓</div>
                   <h3 className="font-cormorant font-bold text-2xl mb-2" style={{ color:'var(--text-0)' }}>Message Sent</h3>
-                  <p className="font-dm text-sm" style={{ color:'var(--text-1)' }}>Domain connection established. I'll reach out soon.</p>
+                  <p className="font-dm text-sm" style={{ color:'var(--text-1)' }}>Domain connection established. I&apos;ll reach out soon.</p>
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={onSubmit} className="space-y-4">

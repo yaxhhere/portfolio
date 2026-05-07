@@ -88,7 +88,7 @@ export default function Navigation() {
               {/* Hamburger mobile */}
               <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden flex flex-col gap-1.5 p-1">
                 {[0,1,2].map(i => (
-                  <motion.span key={i} className="block h-px" style={{ background: 'var(--text-0)' }}
+                  <motion.span key={i}
                     animate={{ width: i===1 ? (menuOpen?'55%':'75%') : '100%', rotate: menuOpen&&i===0?45:menuOpen&&i===2?-45:0, y: menuOpen&&i===0?5:menuOpen&&i===2?-5:0, opacity: menuOpen&&i===1?0:1 }}
                     style={{ originX: 0, display:'block', height:'1px', background:'var(--text-0)' }} />
                 ))}
