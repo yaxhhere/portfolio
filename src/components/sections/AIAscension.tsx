@@ -67,7 +67,7 @@ function NeuralCanvas() {
         ctx.beginPath(); ctx.fillStyle=g; ctx.arc(n.x,n.y,n.r*3+pulse*4,0,Math.PI*2); ctx.fill()
         ctx.beginPath(); ctx.fillStyle=n.color; ctx.shadowColor=n.color; ctx.shadowBlur=8
         ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0
-        ctx.fillStyle='rgba(240,237,230,0.45)'; ctx.font='9px monospace'; ctx.textAlign='center'
+        ctx.fillStyle='rgba(240,237,230,0.55)'; ctx.font='9px monospace'; ctx.textAlign='center'
         ctx.fillText(n.label,n.x,n.y-n.r-4)
       })
       animRef.current=requestAnimationFrame(render)
@@ -98,7 +98,7 @@ export default function AIAscension() {
         <div ref={ref} className="mb-16">
           <motion.div initial={{opacity:0,x:-30}} animate={inView?{opacity:1,x:0}:{}} transition={{duration:0.6}}
             className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-2)', opacity:0.8 }}>CHAPTER 03</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-2)', opacity:0.8 }}>CHAPTER 03</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,var(--accent-2),transparent)' }} />
           </motion.div>
           <div className="overflow-hidden"><motion.h2 className="font-bebas leading-none" style={{ fontSize:'clamp(3.5rem,9vw,7rem)', color:'var(--text-0)' }}
@@ -113,16 +113,16 @@ export default function AIAscension() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
           <motion.div initial={{opacity:0,scale:0.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{duration:1,ease:[0.16,1,0.3,1]}}
-            className="relative h-[400px] md:h-[480px] overflow-hidden"
-            style={{ border:'1px solid var(--border)', background:'var(--bg-card)' }}>
+            data-theme="dark" className="relative h-[400px] md:h-[480px] overflow-hidden"
+            style={{ border:'1px solid rgba(201,168,76,0.2)', background:'#0a0810' }}>
             <NeuralCanvas />
             <div className="absolute inset-0 pointer-events-none"
               style={{ background:'radial-gradient(ellipse at center,transparent 50%,var(--bg-0) 100%)' }} />
-            <div className="absolute top-4 left-4 font-mono text-[10px] space-y-1" style={{ color:'rgba(201,168,76,0.6)' }}>
+            <div className="absolute top-4 left-4 font-anta text-[10px] space-y-1" style={{ color:'rgba(201,168,76,0.6)' }}>
               <div>NEURAL_NETWORK // ACTIVE</div>
               <div style={{ color:'rgba(92,127,168,0.6)' }}>NODES: 26 // EDGES: DYNAMIC</div>
             </div>
-            <div className="absolute bottom-4 right-4 font-mono text-[10px]" style={{ color:'var(--text-2)' }}>Hover to interact</div>
+            <div className="absolute bottom-4 right-4 font-anta text-[10px]" style={{ color:'rgba(240,237,230,0.3)' }}>Hover to interact</div>
           </motion.div>
 
           <div className="space-y-3">
@@ -150,11 +150,11 @@ export default function AIAscension() {
           style={{ background:'rgba(201,168,76,0.04)', border:'1px solid var(--border-accent)' }}>
           <div className="flex items-center gap-2 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
-            <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color:'var(--accent-1)', opacity:0.8 }}>AI Tools in Active Use</span>
+            <span className="font-anta text-[10px] tracking-widest uppercase" style={{ color:'var(--accent-1)', opacity:0.8 }}>AI Tools in Active Use</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {['Claude Code','OpenAI API','ChatGPT / Codex','GPT-4o','LLM Chains','Prompt Engineering'].map((t,i) => (
-              <span key={i} className="px-3 py-1.5 font-mono text-[10px]"
+              <span key={i} className="px-3 py-1.5 font-anta text-[10px]"
                 style={{ background:'rgba(201,168,76,0.1)', border:'1px solid var(--border-accent)', color:'var(--accent-1b)' }}>
                 {t}
               </span>

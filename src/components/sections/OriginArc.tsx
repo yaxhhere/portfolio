@@ -25,7 +25,7 @@ function Panel({ p, i }: { p: typeof PANELS[0]; i: number }) {
 
         <div className="flex items-start justify-between mb-5">
           <div>
-            <span className="font-mono text-[10px] tracking-[0.35em] uppercase" style={{ color:p.color, opacity:0.7 }}>PANEL {p.num}</span>
+            <span className="font-anta text-[10px] tracking-[0.35em] uppercase" style={{ color:p.color, opacity:0.7 }}>PANEL {p.num}</span>
             <div className="font-bebas text-4xl leading-none mt-1" style={{ color:'var(--text-2)', opacity:0.6 }}>{p.year}</div>
           </div>
           <div className="font-cormorant text-4xl font-bold select-none" style={{ color:p.color, opacity:0.15 }}>{p.kanji}</div>
@@ -36,10 +36,11 @@ function Panel({ p, i }: { p: typeof PANELS[0]; i: number }) {
           <h3 className="font-cormorant font-bold text-xl" style={{ color:'var(--text-0)' }}>{p.title}</h3>
         </div>
         <p className="font-dm text-sm leading-relaxed mb-4" style={{ color:'var(--text-1)' }}>{p.desc}</p>
-        <div className="inline-flex items-center gap-2 px-2.5 py-1.5 font-mono text-[10px]"
+        <div className="inline-flex items-center gap-2 px-2.5 py-1.5 font-anta text-[10px]"
           style={{ background:`color-mix(in srgb, ${p.color} 10%, transparent)`, border:`1px solid color-mix(in srgb, ${p.color} 25%, transparent)`, color:p.color, opacity:0.85 }}>
           {p.detail}
         </div>
+
 
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{ background:`radial-gradient(circle at 50% 0%, color-mix(in srgb, ${p.color} 6%, transparent) 0%, transparent 60%)` }} />
@@ -64,7 +65,7 @@ export default function OriginArc() {
         <div ref={ref} className="mb-16">
           <motion.div initial={{opacity:0,x:-30}} animate={inView?{opacity:1,x:0}:{}} transition={{duration:0.6}}
             className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-1)', opacity:0.7 }}>CHAPTER 01</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-1)', opacity:0.7 }}>CHAPTER 01</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,var(--accent-1),transparent)' }} />
           </motion.div>
           <div className="overflow-hidden">

@@ -45,7 +45,7 @@ export default function LoadingScreen() {
                   <h1 className="font-bebas text-5xl md:text-6xl tracking-[0.35em] mb-2" style={{ color: 'var(--text-0)' }}>
                     Yashodhan Kalia
                   </h1>
-                  <p className="font-mono text-xs tracking-[0.55em] uppercase" style={{ color: 'var(--accent-1)' }}>
+                  <p className="font-anta text-xs tracking-[0.55em] uppercase" style={{ color: 'var(--accent-1)' }}>
                     Senior Software Developer
                   </p>
                 </motion.div>
@@ -54,7 +54,7 @@ export default function LoadingScreen() {
                   <h1 className="font-bebas text-5xl md:text-6xl tracking-[0.35em] mb-2" style={{ color: 'var(--text-2)' }}>
                     Yashodhan Kalia
                   </h1>
-                  <p className="font-mono text-xs tracking-[0.55em] uppercase" style={{ color: 'var(--text-2)' }}>
+                  <p className="font-anta text-xs tracking-[0.55em] uppercase" style={{ color: 'var(--text-2)' }}>
                     Initializing Domain...
                   </p>
                 </motion.div>
@@ -68,7 +68,7 @@ export default function LoadingScreen() {
               <div className="loading-bar-fill absolute top-0 left-0 h-full"
                 style={{ background: 'linear-gradient(90deg, var(--accent-1d), var(--accent-1), var(--accent-1b))' }} />
             </div>
-            <div className="flex justify-between mt-2 font-mono text-xs" style={{ color: 'var(--text-2)' }}>
+            <div className="flex justify-between mt-2 font-anta text-xs" style={{ color: 'var(--text-2)' }}>
               <span>SYSTEM BOOT</span><span>v2.6.0</span>
             </div>
           </div>

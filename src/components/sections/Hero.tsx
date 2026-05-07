@@ -36,52 +36,64 @@ function RainSystem() {
   )
 }
 
-/* ─── Orbs (gold + crimson) ─── */
-function EnergyOrbs() {
-  const group = useRef<THREE.Group>(null)
-  const orbs = useMemo(() => Array.from({length:16},(_,i) => ({
-    pos: [(Math.random()-0.5)*20,(Math.random()-0.5)*12,(Math.random()-0.5)*15-3] as [number,number,number],
-    r: 0.06 + Math.random()*0.16, speed: 0.3+Math.random()*0.6, phase: Math.random()*Math.PI*2,
-    color: [0xc9a84c,0x8b1a2f,0xc41e3a,0xe8c97e,0x5c7fa8][Math.floor(Math.random()*5)],
+/* ─── Wireframe geometric shards ─── */
+function GeometricShards() {
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([])
+  const shards = useMemo(() => Array.from({length: 14}, (_, i) => ({
+    pos: [
+      (Math.random() - 0.5) * 22,
+      (Math.random() - 0.5) * 13,
+      (Math.random() - 0.5) * 12 - 2,
+    ] as [number, number, number],
+    size:      0.18 + Math.random() * 0.52,
+    rotSpeed:  [(Math.random()-0.5)*0.7, (Math.random()-0.5)*0.7, (Math.random()-0.5)*0.5] as [number,number,number],
+    floatAmp:  0.6 + Math.random() * 1.0,
+    floatFreq: 0.25 + Math.random() * 0.45,
+    phase:     Math.random() * Math.PI * 2,
+    color:     ['#c9a84c','#c41e3a','#e8c97e','#8b6914','#5c7fa8','#c9a84c'][Math.floor(Math.random()*6)],
+    type:      Math.floor(Math.random() * 3), // 0=ico, 1=oct, 2=tetra
+    opacity:   0.25 + Math.random() * 0.35,
   })), [])
-  useFrame(({clock}) => {
-    if (!group.current) return
-    group.current.children.forEach((c,i) => {
-      const o = orbs[i]
-      c.position.y = o.pos[1] + Math.sin(clock.elapsedTime*o.speed+o.phase)*1.4
-      c.position.x = o.pos[0] + Math.cos(clock.elapsedTime*o.speed*0.7+o.phase)*0.7
+
+  useFrame(({ clock }) => {
+    const t = clock.elapsedTime
+    shards.forEach((s, i) => {
+      const mesh = meshRefs.current[i]
+      if (!mesh) return
+      // Gentle float
+      mesh.position.y = s.pos[1] + Math.sin(t * s.floatFreq + s.phase) * s.floatAmp
+      mesh.position.x = s.pos[0] + Math.cos(t * s.floatFreq * 0.6 + s.phase) * 0.4
+      // Continuous rotation
+      mesh.rotation.x += s.rotSpeed[0] * 0.016
+      mesh.rotation.y += s.rotSpeed[1] * 0.016
+      mesh.rotation.z += s.rotSpeed[2] * 0.016
     })
   })
+
   return (
-    <group ref={group}>
-      {orbs.map((o,i) => (
-        <mesh key={i} position={o.pos}>
-          <sphereGeometry args={[o.r,8,8]} />
-          <meshStandardMaterial color={o.color} emissive={o.color} emissiveIntensity={3} transparent opacity={0.8} />
+    <>
+      {shards.map((s, i) => (
+        <mesh
+          key={i}
+          position={s.pos}
+          ref={el => { meshRefs.current[i] = el }}
+        >
+          {s.type === 0
+            ? <icosahedronGeometry args={[s.size, 0]} />
+            : s.type === 1
+            ? <octahedronGeometry args={[s.size, 0]} />
+            : <tetrahedronGeometry args={[s.size, 0]} />}
+          <meshStandardMaterial
+            color={s.color}
+            emissive={s.color}
+            emissiveIntensity={1.8}
+            wireframe
+            transparent
+            opacity={s.opacity}
+          />
         </mesh>
       ))}
-    </group>
-  )
-}
-
-/* ─── Portal (gold rings) ─── */
-function PortalRings() {
-  const a = useRef<THREE.Mesh>(null), b = useRef<THREE.Mesh>(null), c = useRef<THREE.Mesh>(null)
-  useFrame(({clock}) => {
-    const t = clock.elapsedTime
-    if (a.current) { a.current.rotation.z = t*0.12; a.current.rotation.x = Math.sin(t*0.07)*0.18 }
-    if (b.current) { b.current.rotation.z = -t*0.2; b.current.rotation.y = Math.cos(t*0.09)*0.12 }
-    if (c.current)   c.current.rotation.z = t*0.08
-  })
-  return (
-    <group position={[0,0,-8]}>
-      <mesh ref={a}><torusGeometry args={[5.5,0.025,8,120]}/><meshStandardMaterial color="#c9a84c" emissive="#c9a84c" emissiveIntensity={5} transparent opacity={0.65}/></mesh>
-      <mesh ref={b}><torusGeometry args={[4.0,0.04,8,100]}/><meshStandardMaterial color="#c41e3a" emissive="#c41e3a" emissiveIntensity={4} transparent opacity={0.55}/></mesh>
-      <mesh ref={c}><torusGeometry args={[2.8,0.03,8,80]}/><meshStandardMaterial color="#e8c97e" emissive="#e8c97e" emissiveIntensity={3} transparent opacity={0.45}/></mesh>
-      <mesh position={[0,0,0.5]}><circleGeometry args={[2.7,64]}/><meshStandardMaterial color="#080608" transparent opacity={0.95}/></mesh>
-      <pointLight position={[0,0,0]} color="#c9a84c" intensity={10} distance={14}/>
-      <pointLight position={[0,0,2]} color="#c41e3a" intensity={6} distance={9}/>
-    </group>
+    </>
   )
 }
 
@@ -159,8 +171,7 @@ function Scene() {
     <CameraController/>
     <AmbientParticles/>
     <RainSystem/>
-    <EnergyOrbs/>
-    <PortalRings/>
+    <GeometricShards/>
     <DataStreams/>
   </>
 }
@@ -203,7 +214,7 @@ function HeroUI() {
       <div className="text-center max-w-5xl">
         {/* Status badge */}
         <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{delay:3.4, duration:0.6}}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 font-mono text-xs tracking-widest uppercase"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 font-anta text-xs tracking-widest uppercase"
           style={{ background:'rgba(201,168,76,0.08)', border:'1px solid var(--border-accent)' }}>
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
           <span style={{ color:'var(--text-1)' }}>System Online · Domain Active</span>
@@ -284,14 +295,14 @@ function HeroUI() {
       {/* Scroll cue */}
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:5.2}}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="font-mono text-[10px] tracking-[0.35em] uppercase" style={{ color:'var(--text-2)' }}>Scroll</span>
+        <span className="font-anta text-[10px] tracking-[0.35em] uppercase" style={{ color:'var(--text-2)' }}>Scroll</span>
         <motion.div animate={{y:[0,10,0]}} transition={{duration:1.6,repeat:Infinity}}
           className="w-px h-10" style={{ background:'linear-gradient(to bottom,var(--accent-1),transparent)' }} />
       </motion.div>
 
       {/* HUD corner */}
       <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:4.8}}
-        className="absolute top-24 right-8 md:right-14 font-mono text-[10px] space-y-1 text-right hidden md:block"
+        className="absolute top-24 right-8 md:right-14 font-anta text-[10px] space-y-1 text-right hidden md:block"
         style={{ color:'rgba(201,168,76,0.45)' }}>
         <div>SYS // DOMAIN_ACTIVE</div>
         <div>VER // 2.6.0_ASCENSION</div>
@@ -303,16 +314,17 @@ function HeroUI() {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative w-full h-screen overflow-hidden">
+    /* data-theme="dark" forces all CSS vars inside to always resolve
+       to dark-mode values — the Three.js canvas is always #080608 */
+    <section id="hero" data-theme="dark" className="relative w-full h-screen overflow-hidden"
+      style={{ background: '#080608' }}>
       <div className="absolute inset-0">
         <Canvas dpr={[1,1.5]} gl={{antialias:false,alpha:false}}>
           <Suspense fallback={null}><Scene /></Suspense>
         </Canvas>
       </div>
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background:'radial-gradient(ellipse at center,transparent 25%,rgba(8,6,8,0.65) 100%)' }} />
-      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
-        style={{ background:'linear-gradient(to top,var(--bg-0),transparent)' }} />
+        style={{ background:'radial-gradient(ellipse at center,transparent 25%,rgba(8,6,8,0.7) 100%)' }} />
       <HeroUI />
     </section>
   )

@@ -47,10 +47,14 @@ export default function Navigation() {
                 <motion.div className="rounded-full" animate={{
                   width: active === s.id ? 24 : 5,
                   height: 5,
-                  backgroundColor: active === s.id ? 'var(--accent-1)' : 'var(--text-2)',
-                  boxShadow: active === s.id ? '0 0 8px var(--glow-1)' : 'none',
+                  backgroundColor: active === s.id
+                    ? (theme === 'light' ? '#8b6914' : '#c9a84c')
+                    : (theme === 'light' ? 'rgba(14,12,9,0.22)' : 'rgba(255,255,255,0.2)'),
+                  boxShadow: active === s.id
+                    ? (theme === 'light' ? '0 0 8px rgba(139,105,20,0.6)' : '0 0 8px rgba(201,168,76,0.7)')
+                    : 'none',
                 }} transition={{ duration: 0.3 }} />
-                <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200"
+                <span className="text-[10px] font-anta tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200"
                   style={{ color: active === s.id ? 'var(--accent-1)' : 'var(--text-2)' }}>
                   {s.label}
                 </span>
@@ -94,7 +98,7 @@ export default function Navigation() {
               <div className="hidden lg:flex items-center gap-7">
                 {SECTIONS.slice(1).map(s => (
                   <button key={s.id} onClick={() => scrollTo(s.id)}
-                    className="text-[10px] font-mono tracking-[0.25em] uppercase transition-colors duration-200"
+                    className="text-[10px] font-anta tracking-[0.25em] uppercase transition-colors duration-200"
                     style={{ color: active === s.id ? 'var(--accent-1)' : 'var(--text-2)' }}>
                     {s.label}
                   </button>
@@ -114,13 +118,13 @@ export default function Navigation() {
             {SECTIONS.map((s,i) => (
               <motion.button key={s.id} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:i*0.05}}
                 onClick={() => scrollTo(s.id)}
-                className="block w-full text-left py-3 border-b text-sm font-mono tracking-widest uppercase"
+                className="block w-full text-left py-3 border-b text-sm font-anta tracking-widest uppercase"
                 style={{ borderColor: 'var(--border)', color: active === s.id ? 'var(--accent-1)' : 'var(--text-1)' }}>
                 <span className="mr-4 opacity-30">{s.kanji}</span>{s.label}
               </motion.button>
             ))}
             <div className="pt-4 flex items-center justify-between">
-              <span className="text-xs font-mono" style={{ color: 'var(--text-2)' }}>THEME</span>
+              <span className="text-xs font-anta" style={{ color: 'var(--text-2)' }}>THEME</span>
               <button onClick={toggle} className="text-sm font-mono px-3 py-1.5 border" style={{ borderColor: 'var(--border-accent)', color: 'var(--accent-1)' }}>
                 {theme === 'dark' ? '○ LIGHT MODE' : '● DARK MODE'}
               </button>

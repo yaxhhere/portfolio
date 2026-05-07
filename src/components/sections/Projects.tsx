@@ -52,12 +52,12 @@ function ProjectCard({ p, i }: { p: typeof PROJECTS[0]; i: number }) {
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <span className="font-mono text-[10px] tracking-widest uppercase px-2.5 py-1"
+              <span className="font-anta text-[10px] tracking-widest uppercase px-2.5 py-1"
                 style={{ background:`color-mix(in srgb,${p.color} 12%,transparent)`, color:p.color }}>
                 {p.category}
               </span>
-              <span className="font-mono text-[10px]" style={{ color:'var(--text-2)' }}>{p.year}</span>
-              <span className="font-mono text-[10px] px-2 py-0.5"
+              <span className="font-anta text-[10px]" style={{ color:'var(--text-2)' }}>{p.year}</span>
+              <span className="font-anta text-[10px] px-2 py-0.5"
                 style={{ background:'rgba(16,185,129,0.1)', color:'#10b981', border:'1px solid rgba(16,185,129,0.25)' }}>
                 ● {p.status}
               </span>
@@ -78,7 +78,7 @@ function ProjectCard({ p, i }: { p: typeof PROJECTS[0]; i: number }) {
               style={{ background:`color-mix(in srgb,${p.color} 6%,transparent)`, border:`1px solid color-mix(in srgb,${p.color} 18%,transparent)` }}>
               <div className="text-lg mb-1" style={{ color:p.color }}>{m.icon}</div>
               <div className="font-cormorant font-bold text-sm" style={{ color:'var(--text-0)' }}>{m.value}</div>
-              <div className="font-mono text-[9px] mt-0.5" style={{ color:'var(--text-2)' }}>{m.label}</div>
+              <div className="font-anta text-[9px] mt-0.5" style={{ color:'var(--text-2)' }}>{m.label}</div>
             </div>
           ))}
         </div>
@@ -86,7 +86,7 @@ function ProjectCard({ p, i }: { p: typeof PROJECTS[0]; i: number }) {
         {/* Stack */}
         <div className="flex flex-wrap gap-2 mb-6">
           {p.stack.map((t,i) => (
-            <span key={i} className="px-2.5 py-1 font-mono text-[10px]"
+            <span key={i} className="px-2.5 py-1 font-anta text-[10px]"
               style={{ background:`color-mix(in srgb,${p.color} 8%,transparent)`, border:`1px solid color-mix(in srgb,${p.color} 22%,transparent)`, color:p.color, opacity:0.85 }}>
               {t}
             </span>
@@ -95,7 +95,7 @@ function ProjectCard({ p, i }: { p: typeof PROJECTS[0]; i: number }) {
 
         {/* Expand */}
         <button onClick={() => setOpen(!open)}
-          className="flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase transition-colors duration-300"
+          className="flex items-center gap-2 font-anta text-[10px] tracking-widest uppercase transition-colors duration-300"
           style={{ color: open ? p.color : 'var(--text-2)' }}>
           <motion.span animate={{ rotate: open ? 90 : 0 }} transition={{ duration:0.3 }}>▶</motion.span>
           {open ? 'Hide' : 'View'} Engineering Details
@@ -137,7 +137,7 @@ export default function Projects() {
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         <div ref={ref} className="mb-16">
           <motion.div initial={{opacity:0,x:-30}} animate={inView?{opacity:1,x:0}:{}} transition={{duration:0.6}} className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-2)', opacity:0.8 }}>CHAPTER 05</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-2)', opacity:0.8 }}>CHAPTER 05</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,var(--accent-2),transparent)' }} />
           </motion.div>
           <div className="overflow-hidden"><motion.h2 className="font-bebas leading-none" style={{ fontSize:'clamp(3.5rem,9vw,7rem)', color:'var(--text-0)' }}

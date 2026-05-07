@@ -67,7 +67,7 @@ export default function Contact() {
           <motion.div initial={{opacity:0}} animate={inView?{opacity:1}:{}} transition={{duration:0.6}}
             className="flex items-center justify-center gap-4 mb-6">
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,transparent,var(--accent-1))' }} />
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-1)', opacity:0.7 }}>FINAL CHAPTER</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-1)', opacity:0.7 }}>FINAL CHAPTER</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to left,transparent,var(--accent-1))' }} />
           </motion.div>
           <div className="overflow-hidden">
@@ -94,7 +94,7 @@ export default function Contact() {
             className="lg:col-span-2 space-y-5">
             <div>
               <h3 className="font-bebas text-2xl tracking-wider" style={{ color:'var(--text-0)' }}>Yashodhan Kalia</h3>
-              <p className="font-mono text-xs" style={{ color:'var(--accent-1)' }}>Senior Software Developer</p>
+              <p className="font-anta text-xs" style={{ color:'var(--accent-1)' }}>Senior Software Developer</p>
             </div>
             {[
               { icon:'✉', label:'Email', value:'yashodhankalia0@gmail.com', href:'mailto:yashodhankalia0@gmail.com', color:'var(--accent-1)' },
@@ -109,7 +109,7 @@ export default function Contact() {
                   {item.icon}
                 </div>
                 <div>
-                  <div className="font-mono text-[10px] mb-0.5" style={{ color:'var(--text-2)' }}>{item.label}</div>
+                  <div className="font-anta text-[10px] mb-0.5" style={{ color:'var(--text-2)' }}>{item.label}</div>
                   <div className="font-dm text-sm" style={{ color:'var(--text-0)' }}>{item.value}</div>
                 </div>
               </a>
@@ -117,7 +117,7 @@ export default function Contact() {
             <div className="p-4 border" style={{ borderColor:'rgba(16,185,129,0.2)', background:'rgba(16,185,129,0.04)' }}>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
-                <span className="font-mono text-[10px] tracking-widest text-green-400">AVAILABLE FOR WORK</span>
+                <span className="font-anta text-[10px] tracking-widest text-green-400">AVAILABLE FOR WORK</span>
               </div>
               <p className="font-dm text-xs" style={{ color:'var(--text-1)' }}>Open to senior engineering roles, consulting, and impactful AI projects.</p>
             </div>

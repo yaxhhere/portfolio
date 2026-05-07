@@ -63,9 +63,9 @@ function ArchDiagram() {
         g.addColorStop(0,n.color+'28'); g.addColorStop(1,n.color+'00')
         ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,36,0,Math.PI*2); ctx.fill()
         const bw=82,bh=38
-        ctx.fillStyle=n.color+'16'; ctx.strokeStyle=n.color+'55'; ctx.lineWidth=1
+        ctx.fillStyle=n.color+'22'; ctx.strokeStyle=n.color+'55'; ctx.lineWidth=1
         ctx.beginPath(); ctx.rect(x-bw/2,y-bh/2,bw,bh); ctx.fill(); ctx.stroke()
-        ctx.fillStyle='rgba(240,237,230,0.88)'; ctx.font='bold 10.5px monospace'; ctx.textAlign='center'
+        ctx.fillStyle='rgba(240,237,230,0.92)'; ctx.font='bold 10.5px monospace'; ctx.textAlign='center'
         ctx.fillText(n.label,x,y+2); ctx.fillStyle=n.color+'99'; ctx.font='8px monospace'
         ctx.fillText(n.sub,x,y+14)
       })
@@ -93,7 +93,7 @@ export default function Architecture() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div ref={ref} className="mb-16">
           <motion.div initial={{opacity:0,x:-30}} animate={inView?{opacity:1,x:0}:{}} transition={{duration:0.6}} className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-1b)', opacity:0.8 }}>CHAPTER 06</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-1b)', opacity:0.8 }}>CHAPTER 06</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,var(--accent-1b),transparent)' }} />
           </motion.div>
           <div className="overflow-hidden"><motion.h2 className="font-bebas leading-none" style={{ fontSize:'clamp(3.5rem,9vw,7rem)', color:'var(--text-0)' }}
@@ -103,9 +103,9 @@ export default function Architecture() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <motion.div initial={{opacity:0,scale:0.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{duration:1,ease:[0.16,1,0.3,1]}}
-            className="relative h-[440px] overflow-hidden" style={{ border:'1px solid var(--border)', background:'var(--bg-card)' }}>
+            data-theme="dark" className="relative h-[440px] overflow-hidden" style={{ border:'1px solid rgba(201,168,76,0.2)', background:'#0a0810' }}>
             <ArchDiagram />
-            <div className="absolute top-4 left-4 font-mono text-[10px]" style={{ color:'rgba(201,168,76,0.55)' }}>SYSTEM_MAP // LIVE</div>
+            <div className="absolute top-4 left-4 font-anta text-[10px]" style={{ color:'rgba(201,168,76,0.55)' }}>SYSTEM_MAP // LIVE</div>
             <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center,transparent 50%,var(--bg-0) 100%)' }} />
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 content-start">
@@ -115,7 +115,7 @@ export default function Architecture() {
                 className="p-5 border card-hover" style={{ borderColor:'var(--border)', background:'var(--bg-card)' }}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-1.5 h-1.5 rounded-full" style={{ background:cat.color, boxShadow:`0 0 5px ${cat.color}` }} />
-                  <h4 className="font-mono text-[10px] tracking-widest uppercase" style={{ color:cat.color }}>{cat.title}</h4>
+                  <h4 className="font-anta text-[10px] tracking-widest uppercase" style={{ color:cat.color }}>{cat.title}</h4>
                 </div>
                 <div className="space-y-1.5">
                   {cat.items.map((item,j)=>(

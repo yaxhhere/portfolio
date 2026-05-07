@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Cormorant_Garamond, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Bebas_Neue, Cormorant_Garamond, DM_Sans, JetBrains_Mono, Anta } from "next/font/google";
 import "./globals.css";
 
 const bebasNeue  = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas", display: "swap" });
 const cormorant  = Cormorant_Garamond({ weight: ["300","400","500","600","700"], subsets: ["latin"], variable: "--font-cormorant", display: "swap" });
 const dmSans     = DM_Sans({ subsets: ["latin"], variable: "--font-dm", display: "swap" });
 const jetbrains  = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const anta       = Anta({ weight: "400", subsets: ["latin"], variable: "--font-anta", display: "swap" });
 
 const SITE_URL = "https://yashodhankalia.dev"; // ← update to your actual domain
 
@@ -288,9 +289,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="profile:last_name" content="Kalia" />
         <meta property="profile:username" content="yashodhankalia" />
       </head>
-      <body className={`${bebasNeue.variable} ${cormorant.variable} ${dmSans.variable} ${jetbrains.variable}`}>
+      <body className={`${bebasNeue.variable} ${cormorant.variable} ${dmSans.variable} ${jetbrains.variable} ${anta.variable}`}>
         {children}
       </body>
+
     </html>
   );
 }

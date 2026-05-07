@@ -36,7 +36,7 @@ function PowerCard({ p, i }: { p: typeof POWERS[0]; i: number }) {
 
       <div className="flex items-start justify-between mb-3">
         <div>
-          <div className="font-mono text-[10px] tracking-widest uppercase mb-1" style={{ color:p.color, opacity:0.75 }}>{p.tech}</div>
+          <div className="font-anta text-[10px] tracking-widest uppercase mb-1" style={{ color:p.color, opacity:0.75 }}>{p.tech}</div>
           <h3 className="font-cormorant font-bold text-base leading-tight" style={{ color:'var(--text-0)' }}>{p.name}</h3>
         </div>
         <div className="font-cormorant text-3xl font-bold select-none ml-2 flex-shrink-0"
@@ -47,8 +47,8 @@ function PowerCard({ p, i }: { p: typeof POWERS[0]; i: number }) {
 
       <div className="space-y-1.5">
         <div className="flex justify-between">
-          <span className="font-mono text-[10px]" style={{ color:'var(--text-2)' }}>POWER LEVEL</span>
-          <span className="font-mono text-[10px] font-bold" style={{ color:p.color }}>{p.level}%</span>
+          <span className="font-anta text-[10px]" style={{ color:'var(--text-2)' }}>POWER LEVEL</span>
+          <span className="font-anta text-[10px] font-bold" style={{ color:p.color }}>{p.level}%</span>
         </div>
         <div className="h-[2px] rounded-full overflow-hidden" style={{ background:'var(--border)' }}>
           <motion.div className="h-full rounded-full"
@@ -80,7 +80,7 @@ export default function PowerSystem() {
         <div ref={ref} className="mb-16">
           <motion.div initial={{opacity:0,x:-30}} animate={inView?{opacity:1,x:0}:{}} transition={{duration:0.6}}
             className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase" style={{ color:'var(--accent-3)', opacity:0.8 }}>CHAPTER 02</span>
+            <span className="font-anta text-[11px] tracking-[0.3em] uppercase" style={{ color:'var(--accent-3)', opacity:0.8 }}>CHAPTER 02</span>
             <div className="h-px flex-1 max-w-[80px]" style={{ background:'linear-gradient(to right,var(--accent-3),transparent)' }} />
           </motion.div>
           <div className="overflow-hidden"><motion.h2 className="font-bebas leading-none" style={{ fontSize:'clamp(3.5rem,9vw,7rem)', color:'var(--text-0)' }}
@@ -107,7 +107,7 @@ export default function PowerSystem() {
           ].map((s,i) => (
             <div key={i} className="p-6 text-center" style={{ border:'1px solid var(--border)', background:'var(--bg-card)' }}>
               <div className="font-bebas text-4xl md:text-5xl mb-1" style={{ color:s.color }}>{s.num}</div>
-              <div className="font-mono text-[10px] tracking-widest uppercase" style={{ color:'var(--text-2)' }}>{s.label}</div>
+              <div className="font-anta text-[10px] tracking-widest uppercase" style={{ color:'var(--text-2)' }}>{s.label}</div>
             </div>
           ))}
         </motion.div>
